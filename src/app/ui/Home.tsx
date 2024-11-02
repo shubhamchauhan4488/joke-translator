@@ -1,20 +1,32 @@
 'use client'
-import { useState } from 'react';
 import Joke from './Joke';
 import Translator from './Translator';
+import  useMediaQuery from "../lib/hooks/useMediaQuery";
 
-interface HomeProps {
-  initialJoke: string;
-}
+export default function Home() {
 
-export default function Home({ initialJoke }: HomeProps) {
-  const [currentJoke, setCurrentJoke] = useState<string>(initialJoke);
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   return (
-    <>
-      <Joke initialJoke={initialJoke} onJokeFetched={setCurrentJoke} />
-      <span>⇄</span>
-      <Translator joke={currentJoke} />
-    </>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: isSmallScreen ? "column" : "row",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Joke />
+      <span
+        style={{
+          fontSize: "2rem",
+          transform: isSmallScreen ? "rotate(90deg)" : "none",
+          margin: "0 8px",
+        }}
+      >
+        ⇄
+      </span>
+      <Translator />
+    </div>
   );
 }
