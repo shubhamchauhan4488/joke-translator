@@ -1,4 +1,3 @@
-// components/Button.tsx
 'use client';
 
 import React from 'react';
@@ -61,6 +60,8 @@ const StyledButton = styled.button<ButtonProps>`
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  min-width: 150px;
+  padding: 10px 20px;
   ${({ variant }) => (variant ? buttonStyles[variant] : buttonStyles.primary)}
   ${({ size }) => (size ? sizes[size] : sizes.medium)}
   display: flex;
@@ -98,7 +99,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <StyledButton onClick={onClick} disabled={disabled || loading} variant={variant} size={size}>
-      {loading && <Spinner />}
+      {loading && <Spinner data-testid="spinner"/>}
       {children}
     </StyledButton>
   );

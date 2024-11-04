@@ -12,6 +12,7 @@ const StyledSelect = styled.select`
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  min-width: 150px;
 
   &:hover {
     background-color: #04b8af;
@@ -37,12 +38,13 @@ interface DropdownProps {
   ariaLabel: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onChange = () => { }, ariaLabel, id, value }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, onChange = () => { }, ariaLabel, id, value, disabled }) => {
   return (
     <StyledSelect
       onChange={onChange}
       aria-label={ariaLabel}
       id={id}
+      disabled={disabled}
       value={value}
     >
       {options.map(({ key, value }) => (
