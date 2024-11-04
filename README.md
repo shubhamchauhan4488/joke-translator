@@ -1,9 +1,6 @@
 ## 🌍 Overview
 This is a [Next.js](https://nextjs.org) project that retrieves `Jokes` from one API and `translates` them using another API. The application features a 📱 responsive layout that adapts to different screen sizes, ensuring a user-friendly experience across various devices.
 
-### 🛠️ Technologies Used
-- [Next.js](https://nextjs.org): 
-
 ## 🚀 Getting Started
 
 ### 📋 Prerequisites
@@ -123,8 +120,6 @@ The project is designed to provide an engaging and 📱 responsive user experien
 - *HMR*: NextJs provides HMR out-of-the-box for improved DX.
 - *Turbopack*: New release from NextJs in Next@15 to replace Webpack and reduce build times.
 - *App Router*: Provides nested layouts and server components, enabling more flexibility in defining complex layouts and route-based data fetching.
-
-13. Responsive Design
 
 ### 🔄 Example Workflow
 1. **Joke Fetch a Joke**: A button on the main page fetches a random Joke from the Joke API.
