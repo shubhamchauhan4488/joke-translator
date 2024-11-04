@@ -1,17 +1,19 @@
 'use client'
 import Joke from './Joke';
 import Translator from './Translator';
-import  useMediaQuery from "../lib/hooks/useMediaQuery";
+import { useJokeContext } from '../context/jokeContext';
+import { useMediaQuery } from 'react-responsive'
 
-export default function Home() {
-
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+const Home: React.FC = () => {
+  const { joke, translation } = useJokeContext()
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 768 })
 
   return (
     <div
+      data-testid='home-container'
       style={{
         display: "flex",
-        flexDirection: isSmallScreen ? "column" : "row",
+        flexDirection: isTabletOrMobile ? "column" : "row",
         alignItems: "center",
         justifyContent: "center",
       }}
@@ -20,7 +22,7 @@ export default function Home() {
       <span
         style={{
           fontSize: "2rem",
-          transform: isSmallScreen ? "rotate(90deg)" : "none",
+          transform: isTabletOrMobile ? "rotate(90deg)" : "none",
           margin: "0 8px",
         }}
       >
@@ -30,3 +32,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
