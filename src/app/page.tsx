@@ -1,7 +1,7 @@
 import Home from './ui/Home';
 import "./page.css";
-import { JokeProvider } from './context/jokeContext';
-import { getJoke, getTranslation } from './services/api';
+import { JokeProvider } from './lib/context/jokeContext';
+import { getJoke, getTranslation } from './lib/services/api';
 
 export default async function Page() {
   const joke = await getJoke();

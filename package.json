@@ -14,7 +14,8 @@
     "next": "15.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "react-error-boundary": "^4.1.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -28,6 +29,7 @@
     "@vitest/coverage-istanbul": "^2.1.4",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
+    "jsdom": "^25.0.1",
     "react-loading-skeleton": "^3.5.0",
     "react-responsive": "^10.0.0",
     "ts-node": "^10.9.2",

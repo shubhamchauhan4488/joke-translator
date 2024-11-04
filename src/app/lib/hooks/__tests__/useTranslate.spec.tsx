@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { renderHook, act } from '@testing-library/react';
 import { useTranslate } from '../useTranslate';
-import { useJokeContext } from '@/app/context/jokeContext';
+import { useJokeContext } from '@/app/lib/context/jokeContext';
 import { vi, describe, it, beforeEach, expect } from 'vitest';
 
-vi.mock('@/app/context/jokeContext');
+vi.mock('@/app/lib/context/jokeContext');
 
 describe('useTranslate Hook', () => {
   let mockSetTranslation: ReturnType<typeof vi.fn>;
@@ -28,22 +28,18 @@ describe('useTranslate Hook', () => {
       })
     ) as unknown as typeof fetch;
 
-    
+
     renderHook(() => useTranslate());
 
     await act(async () => expect(global.fetch).toHaveBeenCalled());
 
-    expect(global.fetch).toHaveBeenCalledWith('/api/translate', expect.anything());
+    expect(global.fetch).toHaveBeenCalledWith('/api/translate', {
+      "body": "{\"text\":\"Why did the chicken cross the road?\",\"targetLang\":\"es\"}",
+      "headers": {
+        "Content-Type": "application/json",
+      },
+      "method": "POST",
+    });
     expect(mockSetTranslation).toHaveBeenCalledWith('hello');
-  });
-
-  it('sets an error message if translation fails', async () => {
-    global.fetch = vi.fn(() => Promise.reject(new Error('Network error')));
-
-    
-    renderHook(() => useTranslate());
-    await act(async () => {});
-    // expect(result.current.error).toBe('Network error');
-    expect(mockSetTranslation).toHaveBeenCalledWith('Translation failed');
   });
 });

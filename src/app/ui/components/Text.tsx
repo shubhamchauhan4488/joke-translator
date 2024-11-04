@@ -6,9 +6,11 @@ interface TextBoxProps {
   isTabletOrMobile: boolean;
 }
 
-const TextBox = styled.div<TextBoxProps>`
-  max-width: ${({ isTabletOrMobile }) => isTabletOrMobile ? '100%' : 'none'};
-  font-size: ${({ isTabletOrMobile }) => isTabletOrMobile ? '1rem' : '1.125rem'};
+const TextBox = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isTabletOrMobile'
+})<TextBoxProps>`
+  max-width: ${({ isTabletOrMobile }) => (isTabletOrMobile ? '100%' : 'none')};
+  font-size: ${({ isTabletOrMobile }) => (isTabletOrMobile ? '1rem' : '1.125rem')};
   font-weight: bold;
   margin-bottom: 16px;
   color: #bbb;

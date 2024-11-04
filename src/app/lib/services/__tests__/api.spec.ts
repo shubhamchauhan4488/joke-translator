@@ -1,8 +1,6 @@
 import { getJoke, getTranslation } from '../api';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
-
-
 describe('getJoke', () => {
   beforeEach(() => {
     global.fetch = vi.fn();

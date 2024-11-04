@@ -1,5 +1,4 @@
-// app/api/joke/route.ts
-import { getJoke } from '@/app/services/api';
+import { getJoke } from '@/app/lib/services/api';
 import { NextResponse } from 'next/server';
 
 export async function GET() {

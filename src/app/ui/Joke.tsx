@@ -5,7 +5,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import styled from 'styled-components';
 import { Button } from './components/Button';
-import { useJokeContext } from '../context/jokeContext';
+import { useJokeContext } from '../lib/context/jokeContext';
 import Card from './components/Card';
 import Text from './components/Text';
 
@@ -15,7 +15,7 @@ const ButtonContainer = styled.div`
 `;
 
 export default function Joke() {
-  const { joke, setJoke } = useJokeContext()
+  const { joke, setJoke } = useJokeContext();
   const [isPending, startTransition] = useTransition();
 
   const crackJoke = () => {
@@ -29,7 +29,7 @@ export default function Joke() {
         setJoke(data.joke);
       } catch (error) {
         console.error(error);
-        setJoke("Couldn't fetch a new joke.");
+        throw new Error('Failed to fetch joke' + error);
       }
     });
   };
@@ -42,12 +42,14 @@ export default function Joke() {
           count={2.5}
           inline={true}
           height={15}
-          baseColor="#006560" />) : (
+          baseColor="#006560"
+        />
+      ) : (
         <Text>{joke}</Text>
       )}
       <ButtonContainer>
         <Button onClick={crackJoke} loading={isPending} variant="primary" size="medium">
-          Crack a Joke !
+          Crack a Joke!
         </Button>
       </ButtonContainer>
     </Card>

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent } from '@testing-library/react';
 import Translator from '../Translator';
-import { useJokeContext } from '../../context/jokeContext';
+import { useJokeContext } from '../../lib/context/jokeContext';
 import { useTranslate } from '../../lib/hooks/useTranslate';
 import { describe, it, beforeEach, vi, expect } from 'vitest';
 import '@testing-library/jest-dom';
 
-vi.mock('../../context/jokeContext', () => ({
+vi.mock('../../lib/context/jokeContext', () => ({
   useJokeContext: vi.fn(() => ({
     selectedLang: 'EN',
     setSelectedLang: vi.fn(),
@@ -17,7 +17,6 @@ vi.mock('../../context/jokeContext', () => ({
 vi.mock('../../lib/hooks/useTranslate', () => ({
   useTranslate: vi.fn(() => ({
     isPending: false,
-    error: null,
   })),
 }));
 
@@ -35,7 +34,6 @@ describe('Translator Component', () => {
     };
     mockUseTranslate = {
       isPending: false,
-      error: null,
     };
     vi.mocked(useJokeContext).mockReturnValue(mockJokeContext);
     vi.mocked(useTranslate).mockReturnValue(mockUseTranslate);
@@ -44,13 +42,6 @@ describe('Translator Component', () => {
   it('renders the initial translation', () => {
     render(<Translator />);
     expect(screen.getByText('Why did the chicken cross the road? To get to the other side!')).toBeInTheDocument();
-  });
-
-  it('displays error message when an error occurs', () => {
-    vi.mocked(useTranslate).mockReturnValue({ ...mockUseTranslate, error: 'Translation failed' });
-    render(<Translator />);
-
-    expect(screen.getByText('Translation failed')).toBeInTheDocument();
   });
 
   it('updates selected language when dropdown changes', () => {

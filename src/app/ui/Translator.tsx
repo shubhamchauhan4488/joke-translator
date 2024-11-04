@@ -5,7 +5,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Dropdown from './components/Dropdown';
 import { useTranslate } from '../lib/hooks/useTranslate';
-import { useJokeContext } from '../context/jokeContext';
+import { useJokeContext } from '../lib/context/jokeContext';
 import Card from './components/Card';
 import Text from './components/Text';
 
@@ -21,7 +21,7 @@ const languageMap = {
 
 export default function Translator() {
   const { selectedLang, setSelectedLang, translation } = useJokeContext()
-  const { isPending, error } = useTranslate();
+  const { isPending } = useTranslate();
 
   const handleDropdownOnChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLanguage = e.target.value;
@@ -37,7 +37,6 @@ export default function Translator() {
       ) : (
         <Text>{translation}</Text>
       )}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <Dropdown
         id='langugage-dropdown'
         onChange={handleDropdownOnChange}

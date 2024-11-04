@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Button } from '../Button';
 import { describe, it, expect, vi } from 'vitest';
@@ -40,6 +39,6 @@ expect(spinner).not.toBeNull();
   it('applies disabled styles when disabled', () => {
     render(<Button disabled>Click Me</Button>);
     const button = screen.getByText('Click Me');
-    expect(button).toHaveStyle({ backgroundColor: '#ccc', color: 'black' });
+    expect(button).toHaveStyle({ backgroundColor: '#ccc', color: 'rgb(0, 0, 0)' });
   });
 });

@@ -2,10 +2,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
 import Joke from '../Joke';
-import { useJokeContext } from '../../context/jokeContext';
+import { useJokeContext } from '../../lib/context/jokeContext';
 import '@testing-library/jest-dom';
 
-vi.mock('../../context/jokeContext');
+vi.mock('../../lib/context/jokeContext');
 
 describe('Joke Component', () => {
   let mockSetJoke: vi.Mock;
@@ -35,9 +35,9 @@ describe('Joke Component', () => {
     ) as vi.MockedFunction<typeof fetch>;
 
     render(<Joke />);
-    const button = screen.getByText('Crack a Joke !');
+    const button = screen.getByText('Crack a Joke!');
     fireEvent.click(button);
-    await screen.findByText("Crack a Joke !");
+    await screen.findByText("Crack a Joke!");
 
     expect(global.fetch).toHaveBeenCalledWith('/api/joke');
     expect(mockSetJoke).toHaveBeenCalledWith('A new joke frpm the api');

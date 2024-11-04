@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import Home from '../Home';
-import { useJokeContext } from '../../context/jokeContext';
+import { useJokeContext } from '../../lib/context/jokeContext';
 import { useMediaQuery } from 'react-responsive';
 import '@testing-library/jest-dom';
 
-vi.mock('../../context/jokeContext');
+vi.mock('../../lib/context/jokeContext');
 vi.mock('react-responsive', () => ({
   useMediaQuery: vi.fn(),
 }));

@@ -1,4 +1,4 @@
-import { getTranslation } from '@/app/services/api';
+import { getTranslation } from '@/app/lib/services/api';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {

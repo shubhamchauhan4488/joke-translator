@@ -6,7 +6,9 @@ interface BoxProps {
   isTabletOrMobile: boolean;
 }
 
-const Box = styled.div<BoxProps>`
+const Box = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isTabletOrMobile'
+})<BoxProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,8 +17,8 @@ const Box = styled.div<BoxProps>`
   margin: 20px;
   background-color: #333;
   border-radius: 8px;
-  width: ${({ isTabletOrMobile }) => isTabletOrMobile ? '100%' : '400px'};
-  max-width: ${({ isTabletOrMobile }) => isTabletOrMobile ? '100%' : 'none'};
+  width: ${({ isTabletOrMobile }) => (isTabletOrMobile ? '100%' : '400px')};
+  max-width: ${({ isTabletOrMobile }) => (isTabletOrMobile ? '100%' : 'none')};
   height: 300px;
   box-shadow: 0px 4px 20px rgba(0, 101, 96, 0.5);
   overflow-wrap: break-word;

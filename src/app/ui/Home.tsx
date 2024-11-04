@@ -2,6 +2,7 @@
 import Joke from './Joke';
 import Translator from './Translator';
 import { useMediaQuery } from 'react-responsive'
+import { ErrorBoundary } from "react-error-boundary";
 
 const Home: React.FC = () => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 768 })
@@ -16,7 +17,9 @@ const Home: React.FC = () => {
         justifyContent: "center",
       }}
     >
-      <Joke />
+      <ErrorBoundary fallback={<p>Failed to load jokes. Please try again later.</p>}>
+        <Joke />
+      </ErrorBoundary>
       <span
         style={{
           fontSize: "2rem",
@@ -26,7 +29,9 @@ const Home: React.FC = () => {
       >
         ⇄
       </span>
-      <Translator />
+      <ErrorBoundary fallback={<p>Translation service is currently unavailable.</p>}>
+        <Translator />
+      </ErrorBoundary>
     </div>
   );
 }
