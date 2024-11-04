@@ -6,21 +6,32 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "next": "15.0.1",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "react-loading-skeleton": "^3.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/coverage-istanbul": "^2.1.4",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
-    "typescript": "^5"
+    "react-loading-skeleton": "^3.5.0",
+    "react-responsive": "^10.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5",
+    "vitest": "^2.1.4"
   }
 }
