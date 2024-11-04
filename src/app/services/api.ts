@@ -16,7 +16,6 @@ export async function getJoke(): Promise<string> {
   if (!response.ok) throw new Error(`Failed to get the joke: ${await response.text()}`);
 
   const data = (await response.json()) as JokeResponse;
-  console.log('Joke data', data)
   return data.joke
 }
 
@@ -37,6 +36,5 @@ export async function getTranslation({ text, targetLang }: TranslateApiProps): P
   if (!response.ok) throw new Error(`Failed to translate text: ${await response.text()}`);
 
   const data = (await response.json()) as TranslateResponse;
-  console.log('data.translations:', data.translations)
   return data.translations[0].text;
 }
