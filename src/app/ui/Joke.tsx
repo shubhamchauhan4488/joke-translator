@@ -6,27 +6,8 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import styled from 'styled-components';
 import { Button } from './components/Button';
 import { useJokeContext } from '../context/jokeContext';
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 20px;
-  background-color: #333;
-  border-radius: 8px;
-  max-width: 100%;
-  height: 300px;
-  box-shadow: 0px 4px 20px rgba(0, 101, 96, 0.5);
-`;
-
-const StyledText = styled.p`
-  font-size: 1.125rem;
-  font-weight: bold;
-  margin-bottom: 16px;
-  color: #bbb;
-`;
+import Card from './components/Card';
+import Text from './components/Text';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -34,7 +15,7 @@ const ButtonContainer = styled.div`
 `;
 
 export default function Joke() {
-  const {joke, setJoke} = useJokeContext()
+  const { joke, setJoke } = useJokeContext()
   const [isPending, startTransition] = useTransition();
 
   const crackJoke = () => {
@@ -56,9 +37,13 @@ export default function Joke() {
   return (
     <Card>
       {isPending ? (
-        <Skeleton count={3} width={400} height={20} baseColor="#006560" />
-      ) : (
-        <StyledText>{joke}</StyledText>
+        <Skeleton
+          containerClassName='skeleton-wrapper'
+          count={2.5}
+          inline={true}
+          height={15}
+          baseColor="#006560" />) : (
+        <Text>{joke}</Text>
       )}
       <ButtonContainer>
         <Button onClick={crackJoke} loading={isPending} variant="primary" size="medium">
