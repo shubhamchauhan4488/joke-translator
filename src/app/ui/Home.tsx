@@ -1,11 +1,9 @@
 'use client'
 import Joke from './Joke';
 import Translator from './Translator';
-import { useJokeContext } from '../context/jokeContext';
 import { useMediaQuery } from 'react-responsive'
 
 const Home: React.FC = () => {
-  const { joke, translation } = useJokeContext()
   const isTabletOrMobile = useMediaQuery({ maxWidth: 768 })
 
   return (
